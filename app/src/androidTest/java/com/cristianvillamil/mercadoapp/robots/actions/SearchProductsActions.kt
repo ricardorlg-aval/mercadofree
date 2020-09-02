@@ -5,21 +5,23 @@ import com.agoda.kakao.common.views.KView
 import com.agoda.kakao.recycler.KRecyclerView
 import com.cristianvillamil.mercadoapp.R
 import com.cristianvillamil.mercadoapp.matchers.MotionLayoutMatcher
+import com.cristianvillamil.mercadoapp.robots.Actions
 import com.cristianvillamil.mercadoapp.robots.NoActions
 import com.cristianvillamil.mercadoapp.screens.SearchScreen
 import com.cristianvillamil.mercadoapp.search.model.SearchResult
 import com.cristianvillamil.mercadoapp.search.recycler_view.toMoneyString
 
-class SearchProductsActions {
+class SearchProductsActions :Actions {
     val screen = SearchScreen()
 
-    fun search(query: String) {
+    fun search(query: String) :NoActions{
         screen {
             searchFieldInput {
                 isDisplayed()
                 typeText(query)
             }
         }
+        return NoActions
     }
 
     fun selectItemAtPosition(position: Int): NoActions {
@@ -39,7 +41,7 @@ class SearchProductsActions {
     }
 }
 
-class SearchProductVerifications(private val screen: SearchScreen) {
+class SearchProductVerifications(private val screen: SearchScreen) :Actions {
 
     val size = screen.searchResults
     val results = screen.searchResults

@@ -6,11 +6,12 @@ import com.agoda.kakao.text.KButton
 import com.agoda.kakao.text.KTextView
 import com.cristianvillamil.mercadoapp.matchers.CarouselPicturesMatcher
 import com.cristianvillamil.mercadoapp.network.Picture
+import com.cristianvillamil.mercadoapp.robots.Actions
 import com.cristianvillamil.mercadoapp.robots.NoActions
 import com.cristianvillamil.mercadoapp.screens.ProductDetailsScreen
 import org.hamcrest.Matchers
 
-class ProductDetailsActions {
+class ProductDetailsActions :Actions{
     private val screen = ProductDetailsScreen()
 
     fun withOpenedProduct(verifications: ProductDetailsVerifications.() -> NoActions) =
@@ -18,7 +19,7 @@ class ProductDetailsActions {
 
 }
 
-class ProductDetailsVerifications(screen: ProductDetailsScreen) {
+class ProductDetailsVerifications(screen: ProductDetailsScreen) :Actions {
 
     private val pictures = screen.pictures
     val productTitle = screen.title
